@@ -22,19 +22,23 @@ export default function App() {
       > 
         <View style={styles.content}>
           <View style={styles.form}>
-            <Text>Увійти</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder="Login"
-              value={loginValue}
-              // onChangeText={inputHandler}
-            />
-            <TextInput
-              style={styles.textInput}
-              placeholder="Password"
-              value={passwordValue}
-              // onChangeText={inputHandler}
-            />
+            <View style={styles.titleViev}>
+              <Text style={styles.titleText}>Увійти</Text>
+            </View>
+            <View style={styles.textInput}>
+              <TextInput                
+                placeholder="Login"
+                // value={loginValue}
+                // onChangeText={inputHandler}
+              />
+            </View>
+            <View style={styles.textInput}>
+              <TextInput                
+                placeholder="Password"
+                // value={passwordValue}
+                // onChangeText={inputHandler}
+              />
+            </View>            
             <TouchableOpacity
               style={styles.button}
               // onPress={onPress}
@@ -45,10 +49,11 @@ export default function App() {
                 Увійти
               </Text>
             </TouchableOpacity>
-            <Text style={styles.regText}
-            >
-              Немає аккаунуту? Зареєструватись
-            </Text>
+            <View style={styles.regViev}>
+              <Text style={styles.regText}>
+                Немає аккаунуту? Зареєструватись
+              </Text>
+            </View>
         </View>
         </View>  
         <StatusBar style="auto" />
@@ -59,53 +64,61 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    
+    flex: 1,    
   },
   backgraundImage: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'flex-end'
   },
-  form: {
-    // alignItems: 'center',
+  content: {
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    
   },
-  content: {
-    
-    // alignItems: 'center',
-    // justifyContent: 'center',
+  form: {
+    marginHorizontal: 16,
+  },
+  titleViev: {
+    marginTop: 32,
+    marginBottom: 32,
+    alignItems: "center",
+    fontSize: 30,
+  },
+  titleText: {
+    fontSize: 30,
   },
   textInput: {
-    borderRadius : 10,
-    borderColor: 'red',
-    alignItems: "center",
-    justifyContent: "center",
-
-    
-    padding: 5,
-    backgroundColor: '#fff'
+    fontSize: 16,
+    backgroundColor: '#F6F6F6',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    alignItems: "start",
+    // justifyContent: "center",
+    // alignItems: 'center',    
+    padding: 16,
+    backgroundColor: '#F6F6F6',
+    marginBottom: 16,
 
   },
   button: {
     alignItems: "center",
-    marginHorizontal: 16,
     borderRadius: 100,
-    // height: 32,
-    // weigth: 100,
     paddingTop: 16,
     paddingBottom: 16,
     backgroundColor: '#FF6C00',
     marginBottom: 16,
+    marginTop: 27,
   },
   buttomTitle: {    
     color:'#fff',
   },
+  regViev: {
+    alignItems: "center",
+  },
   regText: {
-    
-    marginBottom: 144,  
+    marginBottom: 144,
+    fontSize: 16,
   }
 });
