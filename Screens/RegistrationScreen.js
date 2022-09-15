@@ -27,15 +27,15 @@ export default function RegistrationScreen() {
             </View>
             <View style={styles.textInput}>
               <TextInput
-                placeholder="Login"
-              // value={loginValue}
+                placeholder="Адреса елекронної пошти"
+              value={loginValue}
               // onChangeText={inputHandler}
               />
             </View>
             <View style={styles.textInput}>
               <TextInput
-                placeholder="Password"
-              // value={passwordValue}
+                placeholder="Пароль"
+              value={passwordValue}
               // onChangeText={inputHandler}
               />
             </View>
