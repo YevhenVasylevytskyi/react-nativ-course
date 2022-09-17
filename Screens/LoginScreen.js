@@ -10,10 +10,12 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
+  Dimensions,
 } from 'react-native';
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+// import * as SplashScreen from 'expo-splash-screen';
 
 const initialState = {
   email: '',
@@ -32,7 +34,20 @@ const loudApplication = async () => {
 export default function LoginScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
-  const [isReady,setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [dimensions, setDimensions] = useState(Dimensions.get('window').width - 16 * 2);
+  
+  useEffect(() => {
+    const onChange = () => {
+      const width = Dimensions.get('window').width - 16 * 2
+      setDimensions(width)
+      // console.log(width)
+    }
+    Dimensions.addEventListener('change', onChange)
+    return () => {
+      width.remove()
+    }
+  }, []);
 
 
   const keyboardHide = () => {
@@ -68,7 +83,11 @@ export default function LoginScreen() {
               behavior={Platform.OS === "ios" ? "padding" : "height"}            
           >       
             <View style={styles.content}>          
-              <View style={{...styles.form, marginBottom: isShowKeyboard ? 32 : 144}}>
+              <View style={{
+                ...styles.form,
+                marginBottom: isShowKeyboard ? 32 : 144,
+                width: dimensions
+              }}>
                 <View style={styles.titleViev}>
                   <Text style={styles.titleText}>Увійти</Text>
                 </View>
@@ -124,12 +143,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   content: {
+    alignItems: 'center',
     backgroundColor: '#fff',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
   },
   form: {
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
     // marginBottom: 144,
   },
   titleViev: {
